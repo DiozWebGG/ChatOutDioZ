@@ -14,13 +14,21 @@
         .app-container { width: 100%; max-width: 1100px; height: 92vh; background: #222e35; display: flex; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 25px rgba(0,0,0,0.5); }
 
         /* SIDEBAR (KONTAK & ID) */
-        .sidebar { width: 350px; background-color: #111b21; border-right: 1px solid rgba(134,150,160,0.15); display: flex; flex-direction: column; }
+        .sidebar { width: 360px; background-color: #111b21; border-right: 1px solid rgba(134,150,160,0.15); display: flex; flex-direction: column; }
         .my-profile { padding: 15px; background-color: #202c33; border-bottom: 1px solid rgba(134,150,160,0.15); display: flex; justify-content: space-between; align-items: center; }
-        .profile-info h3 { font-size: 15px; color: #00a884; display: flex; align-items: center; gap: 8px; }
-        .profile-info .my-id { font-size: 13px; color: #8696a0; margin-top: 4px; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        .profile-left { display: flex; align-items: center; gap: 12px; }
+        
+        /* AVATAR PROFIL & EDIT */
+        .my-avatar-box { position: relative; width: 45px; height: 45px; cursor: pointer; flex-shrink: 0; }
+        .avatar-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: #00a884; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white; font-size: 16px; overflow: hidden; }
+        .avatar-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.2s; color: #fff; font-size: 14px; }
+        .my-avatar-box:hover .avatar-overlay { opacity: 1; }
 
-        /* Ikon Edit, Copy, & New ID */
-        .icon-btn { cursor: pointer; color: #8696a0; transition: 0.2s; font-size: 13px; }
+        .profile-info h3 { font-size: 15px; color: #00a884; display: flex; align-items: center; gap: 6px; }
+        .profile-info .my-id { font-size: 12px; color: #8696a0; margin-top: 3px; font-weight: bold; display: flex; align-items: center; gap: 6px; }
+
+        /* IKON AKSI PROFIL */
+        .icon-btn { cursor: pointer; color: #8696a0; transition: 0.2s; font-size: 12px; }
         .icon-btn:hover { color: #00a884; }
         .icon-btn.danger:hover { color: #ea4335; }
 
@@ -36,7 +44,8 @@
         .friend-item { padding: 12px 15px; border-bottom: 1px solid rgba(134,150,160,0.08); cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
         .friend-item:hover, .friend-item.active { background-color: #2a3942; }
         .friend-left { display: flex; align-items: center; gap: 12px; }
-        .friend-avatar { width: 40px; height: 40px; background: #00a884; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+        .friend-avatar { width: 40px; height: 40px; background: #00a884; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; overflow: hidden; color: white; }
+        .friend-avatar img { width: 100%; height: 100%; object-fit: cover; }
         .friend-info h4 { font-size: 14px; color: #e9edef; }
         .friend-info p { font-size: 11px; color: #8696a0; }
 
@@ -58,18 +67,27 @@
 
         .chat-box { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 0); background-size: 20px 20px; }
 
-        .message { max-width: 65%; padding: 8px 12px; border-radius: 8px; font-size: 14px; word-wrap: break-word; }
+        /* BALON PESAN & FOTO DALAM CHAT */
+        .message { max-width: 65%; padding: 8px 12px; border-radius: 8px; font-size: 14px; word-wrap: break-word; position: relative; }
         .message.received { align-self: flex-start; background-color: #202c33; color: #e9edef; border-top-left-radius: 0; }
         .message.sent { align-self: flex-end; background-color: #005c4b; color: #e9edef; border-top-right-radius: 0; }
         .message .msg-time { font-size: 10px; color: #8696a0; float: right; margin-top: 4px; margin-left: 10px; }
+        .message-img { max-width: 100%; max-height: 250px; border-radius: 6px; margin-top: 4px; display: block; cursor: pointer; }
+        
+        /* Tombol Hapus Pesan */
+        .msg-delete-btn { position: absolute; top: 4px; right: 6px; font-size: 11px; color: rgba(255,255,255,0.4); cursor: pointer; opacity: 0; transition: 0.2s; display: none; }
+        .message.sent:hover .msg-delete-btn { opacity: 1; display: block; }
+        .msg-delete-btn:hover { color: #ea4335; }
 
         .chat-footer { background-color: #202c33; padding: 10px 16px; display: flex; align-items: center; gap: 10px; }
+        .btn-upload-image { background: none; border: none; color: #8696a0; font-size: 20px; cursor: pointer; transition: 0.2s; padding: 0 4px; }
+        .btn-upload-image:hover { color: #00a884; }
         .input-box { flex: 1; background-color: #2a3942; border-radius: 8px; padding: 0 12px; }
         .input-box input { width: 100%; padding: 10px; background: transparent; border: none; color: #e9edef; outline: none; font-size: 14px; }
         .send-btn { background-color: #00a884; color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
         .send-btn:disabled { background-color: #2a3942; cursor: not-allowed; color: #8696a0; }
 
-        /* STYLES FOR CUSTOM POPUP MODAL */
+        /* CUSTOM POPUP MODAL STYLES */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; pointer-events: none; transition: 0.2s ease; }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
         .modal-card { background: #222e35; border-radius: 12px; width: 90%; max-width: 380px; padding: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transform: translateY(-20px); transition: 0.2s ease; }
@@ -89,19 +107,29 @@
     <!-- SIDEBAR -->
     <div class="sidebar">
         <div class="my-profile">
-            <div class="profile-info">
-                <h3>
-                    <span id="myUsernameDisplay">Profil Saya</span>
-                    <i class="fa-solid fa-pen-to-square icon-btn" id="editNameBtn" title="Ganti Nama"></i>
-                </h3>
-                <div class="my-id">
-                    <span id="myIdDisplay">ID: Memuat...</span>
-                    <i class="fa-solid fa-copy icon-btn" id="copyIdBtn" title="Salin ID"></i>
-                    <i class="fa-solid fa-rotate icon-btn danger" id="newIdBtn" title="Buat ID Baru"></i>
+            <div class="profile-left">
+                <!-- AVATAR PROFIL & INPUT FILE -->
+                <div class="my-avatar-box" id="avatarClickArea" title="Klik untuk ganti foto profil">
+                    <div class="avatar-img" id="myAvatarDisplay">U</div>
+                    <div class="avatar-overlay"><i class="fa-solid fa-camera"></i></div>
+                </div>
+                <input type="file" id="avatarFileInput" accept="image/*" style="display: none;">
+
+                <div class="profile-info">
+                    <h3>
+                        <span id="myUsernameDisplay">Profil Saya</span>
+                        <i class="fa-solid fa-pen-to-square icon-btn" id="editNameBtn" title="Ganti Nama"></i>
+                    </h3>
+                    <div class="my-id">
+                        <span id="myIdDisplay">ID: Memuat...</span>
+                        <i class="fa-solid fa-copy icon-btn" id="copyIdBtn" title="Salin ID"></i>
+                        <i class="fa-solid fa-rotate icon-btn danger" id="newIdBtn" title="Buat ID Baru"></i>
+                    </div>
                 </div>
             </div>
-            <!-- TOMBOL RESET ALL -->
-            <button class="btn-reset-all" id="resetAllBtn" title="Hapus Semua Teman & Request">
+
+            <!-- TOMBOL RESET ALL DATA TOTAL -->
+            <button class="btn-reset-all" id="resetAllBtn" title="Reset Semua Data Akun Dari Nol">
                 <i class="fa-solid fa-trash"></i> Reset All
             </button>
         </div>
@@ -112,7 +140,7 @@
         </div>
 
         <div class="friends-list" id="friendsList">
-            <!-- Daftar Teman Dimuat di Sini -->
+            <!-- Daftar Teman Dimuat di Sini secara Realtime -->
         </div>
     </div>
 
@@ -126,7 +154,6 @@
                     <p id="activeChatSubtitle" style="font-size: 11px; color: #8696a0;">Tambahkan ID teman untuk memulai obrolan</p>
                 </div>
             </div>
-            <!-- TEKS BRANDING POJOK KANAN ATAS -->
             <div class="brand-box">
                 <div class="brand-title">ChatOut</div>
                 <div class="brand-author">By: Ardio</div>
@@ -140,6 +167,12 @@
         </div>
 
         <div class="chat-footer">
+            <!-- TOMBOL UPLOAD GAMBAR DALAM CHAT -->
+            <button class="btn-upload-image" id="chatImageBtn" title="Kirim Gambar" disabled>
+                <i class="fa-solid fa-image"></i>
+            </button>
+            <input type="file" id="chatFileInput" accept="image/*" style="display: none;">
+
             <div class="input-box">
                 <input type="text" id="messageInput" placeholder="Ketik pesan..." disabled>
             </div>
@@ -152,11 +185,11 @@
 <div class="modal-overlay" id="customModal">
     <div class="modal-card">
         <div class="modal-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
-        <div class="modal-title" id="modalTitle">Konfirmasi Buat ID Baru</div>
-        <div class="modal-desc" id="modalDesc">ID lama kamu akan diganti secara permanen. Teman kamu perlu menambahkan ID baru kamu lagi nantinya. Lanjutkan?</div>
+        <div class="modal-title" id="modalTitle">Konfirmasi</div>
+        <div class="modal-desc" id="modalDesc">Deskripsi...</div>
         <div class="modal-actions">
             <button class="modal-btn modal-btn-cancel" id="modalCancelBtn">Batal</button>
-            <button class="modal-btn modal-btn-confirm" id="modalConfirmBtn">Ya, Buat ID Baru</button>
+            <button class="modal-btn modal-btn-confirm" id="modalConfirmBtn">Ya, Lanjutkan</button>
         </div>
     </div>
 </div>
@@ -181,6 +214,7 @@
     // --- SETUP USER & ID UNIK ---
     let myId = localStorage.getItem('chatout_my_id');
     let myName = localStorage.getItem('chatout_my_name');
+    let myPhoto = localStorage.getItem('chatout_my_photo') || '';
 
     if (!myId) {
         myId = "USER-" + Math.floor(1000 + Math.random() * 9000);
@@ -189,14 +223,25 @@
         localStorage.setItem('chatout_my_name', myName);
     }
 
-    // Daftarkan User ke Firebase Database
-    set(ref(db, 'users/' + myId), {
+    // Buat/Update Data User di Database Firebase
+    update(ref(db, 'users/' + myId), {
         id: myId,
-        name: myName
+        name: myName,
+        photo: myPhoto
     });
 
     document.getElementById('myUsernameDisplay').innerText = myName;
     document.getElementById('myIdDisplay').innerText = "ID: " + myId;
+
+    function updateMyAvatarUI() {
+        const avatarEl = document.getElementById('myAvatarDisplay');
+        if (myPhoto) {
+            avatarEl.innerHTML = `<img src="${myPhoto}" style="width:100%; height:100%; object-fit:cover;">`;
+        } else {
+            avatarEl.innerText = myName.charAt(0).toUpperCase();
+        }
+    }
+    updateMyAvatarUI();
 
     let activeFriendId = null;
     let currentChatRoomId = null;
@@ -208,16 +253,20 @@
     const editNameBtn = document.getElementById('editNameBtn');
     const copyIdBtn = document.getElementById('copyIdBtn');
     const newIdBtn = document.getElementById('newIdBtn');
+    const avatarClickArea = document.getElementById('avatarClickArea');
+    const avatarFileInput = document.getElementById('avatarFileInput');
     const chatBox = document.getElementById('chatBox');
     const messageInput = document.getElementById('messageInput');
     const sendBtn = document.getElementById('sendBtn');
+    const chatImageBtn = document.getElementById('chatImageBtn');
+    const chatFileInput = document.getElementById('chatFileInput');
 
     // Pop-up Modal Elements
     const customModal = document.getElementById('customModal');
     const modalCancelBtn = document.getElementById('modalCancelBtn');
     const modalConfirmBtn = document.getElementById('modalConfirmBtn');
 
-    // --- FUNSI UTILITY POPUP MODAL ---
+    // --- POPUP MODAL ---
     function showModal(title, desc, confirmText, onConfirm) {
         document.getElementById('modalTitle').innerText = title;
         document.getElementById('modalDesc').innerText = desc;
@@ -239,6 +288,42 @@
 
     modalCancelBtn.addEventListener('click', closeModal);
 
+    // --- FITUR GANTI FOTO PROFIL ---
+    avatarClickArea.addEventListener('click', () => {
+        const choice = prompt("Pilih opsi foto profil:\n1. Upload Foto dari Perangkat\n2. Masukkan Link/URL Gambar\n3. Hapus Foto Profil\n(Ketik angka 1, 2, atau 3)", "1");
+        
+        if (choice === "1") {
+            avatarFileInput.click();
+        } else if (choice === "2") {
+            const photoUrl = prompt("Masukkan Link/URL foto profil (misal: https://...):");
+            if (photoUrl && photoUrl.trim() !== "") {
+                saveNewPhoto(photoUrl.trim());
+            }
+        } else if (choice === "3") {
+            saveNewPhoto('');
+        }
+    });
+
+    avatarFileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                saveNewPhoto(event.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    async function saveNewPhoto(photoData) {
+        myPhoto = photoData;
+        localStorage.setItem('chatout_my_photo', myPhoto);
+        updateMyAvatarUI();
+
+        await update(ref(db, 'users/' + myId), { photo: myPhoto });
+        alert("Foto profil berhasil diperbarui!");
+    }
+
     // --- FITUR GENERATE NEW ID ---
     newIdBtn.addEventListener('click', () => {
         showModal(
@@ -246,15 +331,11 @@
             "ID kamu yang lama akan dihapus. Semua koneksi pertemanan akan di-reset untuk ID baru ini. Yakin ingin melanjutkan?",
             "Ya, Buat ID Baru",
             async () => {
-                // Hapus data ID lama dari Firebase database
                 await remove(ref(db, 'users/' + myId));
                 await remove(ref(db, 'friends/' + myId));
 
-                // Buat ID baru
                 const newIdGenerated = "USER-" + Math.floor(1000 + Math.random() * 9000);
                 localStorage.setItem('chatout_my_id', newIdGenerated);
-                
-                // Reload halaman otomatis untuk mengaplikasikan ID baru
                 location.reload();
             }
         );
@@ -267,22 +348,14 @@
             myName = newName.trim();
             localStorage.setItem('chatout_my_name', myName);
             document.getElementById('myUsernameDisplay').innerText = myName;
+            updateMyAvatarUI();
 
             await update(ref(db, 'users/' + myId), { name: myName });
-
-            const snapshot = await get(ref(db, `friends/${myId}`));
-            if (snapshot.exists()) {
-                const friendsData = snapshot.val();
-                for (let friendId in friendsData) {
-                    await update(ref(db, `friends/${friendId}/${myId}`), { name: myName });
-                }
-            }
-
             alert("Nama pengguna berhasil diubah!");
         }
     });
 
-    // --- FITUR COPY ID KE CLIPBOARD ---
+    // --- FITUR COPY ID ---
     copyIdBtn.addEventListener('click', () => {
         navigator.clipboard.writeText(myId).then(() => {
             alert(`ID "${myId}" berhasil disalin ke clipboard!`);
@@ -291,7 +364,7 @@
         });
     });
 
-    // --- FITUR KIRIM FRIEND REQUEST (PENDING) ---
+    // --- FITUR ADD FRIEND ---
     addFriendBtn.addEventListener('click', async () => {
         const targetId = friendIdInput.value.trim();
         if (!targetId) return alert("Masukkan ID teman terlebih dahulu!");
@@ -303,13 +376,11 @@
 
             await set(ref(db, `friends/${myId}/${targetId}`), {
                 id: friendData.id,
-                name: friendData.name,
                 status: 'pending_out'
             });
 
             await set(ref(db, `friends/${targetId}/${myId}`), {
                 id: myId,
-                name: myName,
                 status: 'pending_in'
             });
 
@@ -320,85 +391,103 @@
         }
     });
 
-    // --- FITUR RESET ALL ---
+    // --- FITUR RESET ALL DATA TOTAL (DARI NOL) ---
     resetAllBtn.addEventListener('click', () => {
         showModal(
-            "Reset Semua Pertemanan",
-            "Apakah kamu yakin ingin MENGHAPUS SEMUA teman & permintaan pertemanan dari kontak kamu?",
-            "Ya, Hapus Semua",
+            "RESET TOTAL SEMUA DATA AKUN",
+            "PERINGATAN: Nama, Foto Profil, ID, Semua Kontak Teman, dan Riwayat Chat kamu akan DIHAPUS TOTAL DARI NOL. Apakah kamu yakin?",
+            "Ya, Hapus Semua & Reset",
             async () => {
+                // 1. Hapus dari database Firebase
                 const snapshot = await get(ref(db, `friends/${myId}`));
                 if (snapshot.exists()) {
                     const friendsData = snapshot.val();
                     for (let friendId in friendsData) {
                         await remove(ref(db, `friends/${friendId}/${myId}`));
                     }
-                    await remove(ref(db, `friends/${myId}`));
-
-                    activeFriendId = null;
-                    currentChatRoomId = null;
-                    document.getElementById('activeChatTitle').innerText = "Pilih Teman untuk Chat";
-                    document.getElementById('activeChatSubtitle').innerText = "Tambahkan ID teman untuk memulai obrolan";
-                    document.getElementById('activeAvatar').innerHTML = '<i class="fa-solid fa-user"></i>';
-                    chatBox.innerHTML = '<div style="text-align: center; color: #8696a0; font-size: 12px; margin-top: 30px;">Daftar pertemanan berhasil dibersihkan.</div>';
-                    messageInput.disabled = true;
-                    sendBtn.disabled = true;
-
-                    alert("Semua pertemanan berhasil di-reset!");
-                } else {
-                    alert("Kamu belum memiliki daftar pertemanan untuk di-reset.");
                 }
+                await remove(ref(db, `friends/${myId}`));
+                await remove(ref(db, `users/${myId}`));
+
+                // 2. Bersihkan Local Storage secara menyeluruh
+                localStorage.removeItem('chatout_my_id');
+                localStorage.removeItem('chatout_my_name');
+                localStorage.removeItem('chatout_my_photo');
+
+                // 3. Reload aplikasi untuk mendaftar akun dari nol
+                location.reload();
             }
         );
     });
 
-    // --- TAMPILKAN DAFTAR TEMAN REALTIME ---
+    // --- TAMPILKAN DAFTAR TEMAN REALTIME & SYNC FOTO PROFIL ---
     onValue(ref(db, `friends/${myId}`), (snapshot) => {
         friendsListEl.innerHTML = '';
         const data = snapshot.val();
         
         if (data) {
-            Object.values(data).forEach(friend => {
-                const item = document.createElement('div');
-                item.className = `friend-item ${activeFriendId === friend.id ? 'active' : ''}`;
-                
-                let actionHTML = '';
-
-                if (friend.status === 'pending_out') {
-                    actionHTML = `<span class="status-badge"><i class="fa-solid fa-clock"></i> Pending</span>`;
-                } else if (friend.status === 'pending_in') {
-                    actionHTML = `
-                        <div class="btn-group">
-                            <button class="btn-accept" onclick="acceptFriend('${friend.id}', '${friend.name}')"><i class="fa-solid fa-check"></i> Accept</button>
-                            <button class="btn-reject" onclick="rejectFriend('${friend.id}')"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                    `;
-                }
-
-                item.innerHTML = `
-                    <div class="friend-left">
-                        <div class="friend-avatar">${friend.name.charAt(0).toUpperCase()}</div>
-                        <div class="friend-info">
-                            <h4>${friend.name}</h4>
-                            <p>${friend.id}</p>
-                        </div>
-                    </div>
-                    <div>${actionHTML}</div>
-                `;
-
-                item.onclick = (e) => {
-                    if (e.target.tagName === 'BUTTON' || e.target.tagName === 'I') return;
-
-                    if (friend.status === 'accepted') {
-                        selectFriend(friend);
-                    } else if (friend.status === 'pending_out') {
-                        alert("Pertemanan masih pending. Tunggu teman kamu menerima pertemanan!");
-                    } else {
-                        alert("Klik tombol 'Accept' untuk menerima pertemanan ini!");
+            Object.values(data).forEach(friendRef => {
+                onValue(ref(db, `users/${friendRef.id}`), (userSnap) => {
+                    const userData = userSnap.val() || { name: 'User ' + friendRef.id, photo: '' };
+                    
+                    let item = document.getElementById(`friend-item-${friendRef.id}`);
+                    if (!item) {
+                        item = document.createElement('div');
+                        item.id = `friend-item-${friendRef.id}`;
+                        friendsListEl.appendChild(item);
                     }
-                };
 
-                friendsListEl.appendChild(item);
+                    item.className = `friend-item ${activeFriendId === friendRef.id ? 'active' : ''}`;
+
+                    let actionHTML = '';
+                    if (friendRef.status === 'pending_out') {
+                        actionHTML = `<span class="status-badge"><i class="fa-solid fa-clock"></i> Pending</span>`;
+                    } else if (friendRef.status === 'pending_in') {
+                        actionHTML = `
+                            <div class="btn-group">
+                                <button class="btn-accept" onclick="acceptFriend('${friendRef.id}', '${userData.name}')"><i class="fa-solid fa-check"></i> Accept</button>
+                                <button class="btn-reject" onclick="rejectFriend('${friendRef.id}')"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        `;
+                    }
+
+                    let avatarContent = userData.photo 
+                        ? `<img src="${userData.photo}">` 
+                        : userData.name.charAt(0).toUpperCase();
+
+                    item.innerHTML = `
+                        <div class="friend-left">
+                            <div class="friend-avatar">${avatarContent}</div>
+                            <div class="friend-info">
+                                <h4>${userData.name}</h4>
+                                <p>${friendRef.id}</p>
+                            </div>
+                        </div>
+                        <div>${actionHTML}</div>
+                    `;
+
+                    if (activeFriendId === friendRef.id) {
+                        document.getElementById('activeChatTitle').innerText = userData.name;
+                        const headerAvatar = document.getElementById('activeAvatar');
+                        if (userData.photo) {
+                            headerAvatar.innerHTML = `<img src="${userData.photo}" style="width:100%; height:100%; object-fit:cover;">`;
+                        } else {
+                            headerAvatar.innerText = userData.name.charAt(0).toUpperCase();
+                        }
+                    }
+
+                    item.onclick = (e) => {
+                        if (e.target.tagName === 'BUTTON' || e.target.tagName === 'I') return;
+
+                        if (friendRef.status === 'accepted') {
+                            selectFriend({ id: friendRef.id, name: userData.name, photo: userData.photo });
+                        } else if (friendRef.status === 'pending_out') {
+                            alert("Pertemanan masih pending. Tunggu teman kamu menerima pertemanan!");
+                        } else {
+                            alert("Klik tombol 'Accept' untuk menerima pertemanan ini!");
+                        }
+                    };
+                });
             });
         } else {
             friendsListEl.innerHTML = '<p style="font-size:12px; color:#8696a0; padding:15px; text-align:center;">Belum ada teman. Tambahkan ID teman di atas!</p>';
@@ -412,7 +501,7 @@
         alert(`Sekarang kamu dan ${friendName} sudah berteman!`);
     };
 
-    // --- REJECT / CANCEL REQUEST ---
+    // --- REJECT REQUEST ---
     window.rejectFriend = async (friendId) => {
         if (confirm("Hapus/Tolak permintaan pertemanan ini?")) {
             await remove(ref(db, `friends/${myId}/${friendId}`));
@@ -425,27 +514,49 @@
         activeFriendId = friend.id;
         document.getElementById('activeChatTitle').innerText = friend.name;
         document.getElementById('activeChatSubtitle').innerText = friend.id;
-        document.getElementById('activeAvatar').innerText = friend.name.charAt(0).toUpperCase();
+        
+        const headerAvatar = document.getElementById('activeAvatar');
+        if (friend.photo) {
+            headerAvatar.innerHTML = `<img src="${friend.photo}" style="width:100%; height:100%; object-fit:cover;">`;
+        } else {
+            headerAvatar.innerText = friend.name.charAt(0).toUpperCase();
+        }
 
         messageInput.disabled = false;
         sendBtn.disabled = false;
+        chatImageBtn.disabled = false;
 
         currentChatRoomId = [myId, activeFriendId].sort().join('_PRIVATE_');
         loadMessages(currentChatRoomId);
     }
 
-    // --- MEMUAT PESAN PRIVATE REALTIME ---
+    // --- MEMUAT PESAN PRIVATE REALTIME & TAMPILAN GAMBAR ---
     function loadMessages(roomId) {
         onValue(ref(db, `private_chats/${roomId}`), (snapshot) => {
             chatBox.innerHTML = '';
             const data = snapshot.val();
             if (data) {
-                Object.values(data).forEach(msg => {
+                Object.keys(data).forEach(msgKey => {
+                    const msg = data[msgKey];
                     const msgDiv = document.createElement('div');
                     const isMine = msg.senderId === myId;
                     msgDiv.className = `message ${isMine ? 'sent' : 'received'}`;
+                    
+                    let deleteBtnHTML = isMine 
+                        ? `<i class="fa-solid fa-trash msg-delete-btn" onclick="deleteMessage('${msgKey}')" title="Hapus Pesan"></i>` 
+                        : '';
+
+                    let contentHTML = '';
+                    if (msg.image) {
+                        contentHTML += `<img src="${msg.image}" class="message-img" onclick="window.open('${msg.image}')" title="Klik untuk memperbesar">`;
+                    }
+                    if (msg.text) {
+                        contentHTML += `<div>${msg.text}</div>`;
+                    }
+
                     msgDiv.innerHTML = `
-                        ${msg.text}
+                        ${deleteBtnHTML}
+                        ${contentHTML}
                         <span class="msg-time">${msg.time}</span>
                     `;
                     chatBox.appendChild(msgDiv);
@@ -457,7 +568,21 @@
         });
     }
 
-    // --- KIRIM PESAN ---
+    // --- FITUR HAPUS PESAN ---
+    window.deleteMessage = (msgKey) => {
+        showModal(
+            "Hapus Pesan",
+            "Apakah kamu yakin ingin menghapus pesan ini?",
+            "Ya, Hapus",
+            async () => {
+                if (currentChatRoomId && msgKey) {
+                    await remove(ref(db, `private_chats/${currentChatRoomId}/${msgKey}`));
+                }
+            }
+        );
+    };
+
+    // --- KIRIM PESAN TEKS ---
     function sendMessage() {
         const text = messageInput.value.trim();
         if (!text || !currentChatRoomId) return;
@@ -477,6 +602,30 @@
     sendBtn.addEventListener('click', sendMessage);
     messageInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') sendMessage();
+    });
+
+    // --- FITUR KIRIM FOTO / GAMBAR KE CHAT ---
+    chatImageBtn.addEventListener('click', () => {
+        chatFileInput.click();
+    });
+
+    chatFileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file && currentChatRoomId) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const timeNow = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+
+                push(ref(db, `private_chats/${currentChatRoomId}`), {
+                    senderId: myId,
+                    image: event.target.result,
+                    time: timeNow,
+                    timestamp: Date.now()
+                });
+                chatFileInput.value = '';
+            };
+            reader.readAsDataURL(file);
+        }
     });
 </script>
 </body>
